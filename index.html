@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A responsive weather dashboard that shows current conditions from your location or any searched city.">
+  <title>WeatherScope</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="weather-shell">
+    <section class="weather-board" aria-labelledby="app-title">
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">Live weather</p>
+          <h1 id="app-title">WeatherScope</h1>
+        </div>
+        <div class="unit-toggle" aria-label="Temperature unit">
+          <button class="unit-button active" type="button" data-unit="celsius" aria-pressed="true">C</button>
+          <button class="unit-button" type="button" data-unit="fahrenheit" aria-pressed="false">F</button>
+        </div>
+      </header>
+
+      <form class="search-panel" id="searchForm" aria-label="Search weather by location">
+        <label class="visually-hidden" for="locationInput">Location</label>
+        <input id="locationInput" name="location" type="search" placeholder="Search city, region, or country" autocomplete="off">
+        <button class="button primary" type="submit">Search</button>
+        <button class="button secondary" id="locationButton" type="button">Use my location</button>
+      </form>
+
+      <p class="status-message" id="statusMessage" role="status" aria-live="polite"></p>
+
+      <section class="current-weather" id="weatherContent" aria-live="polite">
+        <div class="condition-card">
+          <div class="condition-visual" id="conditionVisual" aria-hidden="true">
+            <span class="sun-core"></span>
+            <span class="cloud-part cloud-a"></span>
+            <span class="cloud-part cloud-b"></span>
+          </div>
+          <div>
+            <p class="location-name" id="locationName">New Delhi, India</p>
+            <p class="updated-time" id="updatedTime">Current conditions</p>
+            <p class="condition-text" id="conditionText">Loading weather...</p>
+          </div>
+        </div>
+
+        <div class="temperature-panel">
+          <p class="temperature" id="temperature">--</p>
+          <p class="feels-like" id="feelsLike">Feels like --</p>
+        </div>
+      </section>
+
+      <section class="details-grid" aria-label="Weather details">
+        <article class="detail-card">
+          <span class="detail-label">Humidity</span>
+          <strong id="humidity">--</strong>
+        </article>
+        <article class="detail-card">
+          <span class="detail-label">Wind</span>
+          <strong id="wind">--</strong>
+        </article>
+        <article class="detail-card">
+          <span class="detail-label">Cloud cover</span>
+          <strong id="cloudCover">--</strong>
+        </article>
+        <article class="detail-card">
+          <span class="detail-label">Pressure</span>
+          <strong id="pressure">--</strong>
+        </article>
+      </section>
+
+      <section class="forecast-section" aria-labelledby="forecast-title">
+        <div class="section-heading">
+          <h2 id="forecast-title">Next 5 days</h2>
+          <span id="timezoneLabel">Local timezone</span>
+        </div>
+        <div class="forecast-row" id="forecastRow"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js?v=weather-1"></script>
+</body>
+</html>
